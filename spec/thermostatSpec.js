@@ -26,4 +26,26 @@ describe('Thermostat', function() {
     expect(function() { thermostat.reduceTemp(11); }).toThrow("Minimum temperature is 10 degrees");
   });
 
+  it('toggles power save mode', function() {
+    thermostat.togglePowerSave();
+    expect(thermostat.powerSaveMode).toEqual(false);
+  });
+
+  it('increase the max temperature when power save mode is off', function() {
+    thermostat.togglePowerSave();
+    expect(thermostat.maxTemperature).toEqual(32);
+  });
+
+  it('can toggle back to power saving mode', function() {
+    thermostat.togglePowerSave();
+    thermostat.togglePowerSave();
+    expect(thermostat.powerSaveMode).toEqual(true);
+  });
+
+  it('reduces the max temperature back to 25 when power save toggled', function() {
+    thermostat.togglePowerSave();
+    thermostat.togglePowerSave();
+    expect(thermostat.maxTemperature).toEqual(25);
+  });
+
 });
