@@ -32,6 +32,7 @@ $(document).ready(function() {
     thermostat.currentEnergyUsage();
     $('#current_temp').text('Current Temp: ' + thermostat.temperature + 'C');
     $('#EU_indicator').text('Energy Usage: ' + thermostat.energyUsage);
+    $('#current_temp').attr('class', thermostat.energyUsage);
   };
 
 })
