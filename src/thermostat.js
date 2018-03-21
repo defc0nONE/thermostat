@@ -7,7 +7,15 @@ class Thermostat {
   }
 
   increaseTemp(number) {
+    var result = this.temperature + number;
+
+    if (result > this.maxTemperature && this.powerSaveMode === true) {
+      throw("Maximum temperature is 25 degrees");
+    } else if (result > this.maxTemperature && this.powerSaveMode === false) {
+      throw("Maximum temperature is 32 degrees");
+    } else {
     this.temperature += number;
+    }
   }
 
   reduceTemp(number) {

@@ -53,4 +53,14 @@ describe('Thermostat', function() {
     thermostat.reset();
     expect(thermostat.temperature).toEqual(20);
   });
+
+  it('cannot go above the max temperature in power saving mode', function() {
+    expect(function() { thermostat.increaseTemp(6); }).toThrow("Maximum temperature is 25 degrees");
+  });
+
+  it('cannot go above the max temperature with power saving mode off', function() {
+    thermostat.togglePowerSave();
+    expect(function() { thermostat.increaseTemp(13); }).toThrow("Maximum temperature is 32 degrees");
+  });
+
 });
