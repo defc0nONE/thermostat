@@ -21,7 +21,7 @@ describe('Thermostat', function() {
 
     it('returns thermostat current energy usage', function() {
       thermostat.currentEnergyUsage()
-      expect(thermostat.energyUsage).toEqual('medium usage');
+      expect(thermostat.energyUsage).toEqual('Medium');
     });
   });
 
