@@ -4,6 +4,7 @@ class Thermostat {
     this.minTemperature = 10;
     this.maxTemperature = 25;
     this.powerSaveMode = true;
+    this.energyUsage = 'medium';
   }
 
   increaseTemp(number) {
@@ -40,6 +41,17 @@ class Thermostat {
 
   reset() {
     this.temperature = 20;
+  }
+
+  currentEnergyUsage() {
+    if (this.temperature < 18) {
+      this.energyUsage = 'low usage'
+    } else if (this.temperature < 25) {
+      this.energyUsage = 'medium usage'
+    } else if (this.temperature < 32) {
+      this.energyUsage = 'high usage'
+    }
+    return this.energyUsage;
   }
 
 }
