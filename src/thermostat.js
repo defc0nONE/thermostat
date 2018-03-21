@@ -3,11 +3,11 @@ class Thermostat {
     this.temperature = 20;
   }
 
-  increaseTemp() {
-    this.temperature++;
+  increaseTemp(number) {
+    this.temperature += number;
   }
 
-  reduceTemp() {
-    this.temperature--;
+  reduceTemp(number) {
+    this.temperature -= number;
   }
 }
