@@ -28,6 +28,11 @@ $(document).ready(function() {
     $('#PSM_indicator').text('Power Saving Mode: ' + thermostat.powerSaveMode);
   });
 
+  $('#button').click(function() {
+    var city = $('#city').val();
+    enteredCity(city);
+  });
+
   function updateInterfaceValues() {
     thermostat.currentEnergyUsage();
     $('#current_temp').text('Current Temp: ' + thermostat.temperature + 'C');
@@ -35,8 +40,14 @@ $(document).ready(function() {
     $('#current_temp').attr('class', thermostat.energyUsage);
   };
 
+  function enteredCity(city) {
+    $.getJSON(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=12379761416befa8f8b7fa740cc99415&units=metric`, function(data) {
+      $('#weather').text('The current weather is: ' + data.weather[0].main + ' in ' + data.name)
+    });
+  };
+
   $.getJSON('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=12379761416befa8f8b7fa740cc99415&units=metric', function(data) {
-    $('#weather').append('The current weather is: ' + data.weather[0].main)
+    $('#weather').text('The current weather is: ' + data.weather[0].main + ' in ' + data.name)
   });
 
 })
